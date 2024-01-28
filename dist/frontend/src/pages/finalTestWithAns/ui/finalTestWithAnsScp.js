@@ -29,8 +29,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const finalTestWithAnsStl_module_css_1 = __importDefault(require("./finalTestWithAnsStl.module.css"));
 const react_redux_1 = require("react-redux");
+const _2_png_1 = __importDefault(require("../images/2.png"));
 const _1_png_1 = __importDefault(require("../images/1.png"));
+const react_router_dom_1 = require("react-router-dom");
 const FinalTestWithAnseComp = () => {
+    const navigate = (0, react_router_dom_1.useNavigate)();
+    const isAdminItem = (0, react_redux_1.useSelector)((state) => state.adminR.isAdmin);
+    if (!isAdminItem) {
+        navigate('/');
+    }
     const chAnsQuestCountItem = (0, react_redux_1.useSelector)((state) => state.testR.allInfo);
     const [inputValues, setInputValues] = (0, react_1.useState)({
         num1: '',
@@ -148,18 +155,24 @@ const FinalTestWithAnseComp = () => {
                     <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content}>
                         <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1}>
                             <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_1}>
-                                <span className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_1_num}>{examYear}</span>թ․ {examType} քննություն
+                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_1_txt_content}>
+                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_1_txt_content_1}>
+                                        {examYear} քննություն
+                                    </div>
+                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_1_txt_content_1}>
+                                        Առարկա՝ {subjectName}
+                                    </div>
+                                </div>
                             </div>
                             <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_2}>
                                 <span>Պատասխանների ձևաթուղթ</span>
-                                <span>{subjectName}</span>
                             </div>
                             <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_3}>
                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_3_1}>
                                     <input type="text"/>
                                 </div>
                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_3_2}>
-                                    ազգանուն
+                                    Ազգանուն
                                 </div>
                             </div>
                             <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_4}>
@@ -168,7 +181,7 @@ const FinalTestWithAnseComp = () => {
                                         <input type="text"/>
                                     </div>
                                     <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_3_2}>
-                                        անուն
+                                        Անուն
                                     </div>
                                 </div>
                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_4_1}>
@@ -176,25 +189,22 @@ const FinalTestWithAnseComp = () => {
                                         <input type="text"/>
                                     </div>
                                     <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_3_2}>
-                                        հայրանուն
+                                        Հայրանուն
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_2}>
-                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_2_1}></div>
+                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_2_1}>
+                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_2_1_1}>
+                                    Գնահատական
+                                </div>
+                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_2_1_2}>
+                                    /20
+                                </div>
+                            </div>
                             <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_2_2}>
-                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_2_2_1}>
-                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                    </div>
-                                </div>
 
-                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_2_2_1}>
-                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                    </div>
-                                </div>
 
                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_2_2_1}>
                                     <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
@@ -225,7 +235,15 @@ const FinalTestWithAnseComp = () => {
                                 </div>
                             </div>
                             <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_1_3_2}>
-                                Անձնական համար
+                                Խմբի համար
+                            </div>
+                        </div>
+                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_3}>
+                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_3_1}>
+                                <img src={_2_png_1.default} alt=""/>
+                            </div>
+                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_first_content_3_2}>
+                                {examYear - 1}-{examYear}թ․
                             </div>
                         </div>
                     </div>
@@ -318,7 +336,6 @@ const FinalTestWithAnseComp = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_2_2}></div>
                         </div>
                         {/* third part */}
 
@@ -327,6 +344,8 @@ const FinalTestWithAnseComp = () => {
 
                             {arrAllInfossHkArr.map((val1) => {
             let isNewCategory = true;
+            let isFirstCtShown = false;
+            let isSecondCtShown = true;
             let num = 0;
             // second item
             let secNum = 0;
@@ -336,134 +355,67 @@ const FinalTestWithAnseComp = () => {
             let thirdNum = 0;
             let currentNum = 0;
             let currentNumClone = 0;
-            return (
-            // <div className={styles.category_info}>
-            //     <div>
-            //         Category {val1.category}
-            //     </div>
-            //     <div className={styles.category_content}>
-            // {
-            val1.questions.map((val, ind) => {
-                // debugger
-                let isFirstCtShown = false;
-                if (val.questionType.length > 0) {
-                    isFirstCtShown = true;
-                }
-                console.log(secNum, 'secNum');
-                if (val.uniqName === 'choose') {
-                    if (val.questionType.length > 20) {
-                        num = Math.floor(val.questionType.length / 20) * 20;
+            let f = 0;
+            let forthNum = 0;
+            let forthBNum = 0;
+            // debugger
+            return (<>
+                                            {/* <span className={styles.ctgry_name}>
+                    Category {val1.category}
+                </span> */}
+                                            {val1.questions.map((val, ind) => {
+                    // debugger
+                    let indNum = 0;
+                    if (val.questionType.length > 0) {
+                        isFirstCtShown = true;
                     }
-                    else {
-                        num = val.questionType.length;
-                    }
-                    return (<>
-                                                        {/* {
-                            val.questionType.length
+                    console.log(secNum, 'secNum');
+                    if (val.uniqName === 'choose') {
+                        if (val.questionType.length > 20) {
+                            num = Math.floor(val.questionType.length / 20) * 20;
+                        }
+                        else {
+                            num = val.questionType.length;
+                        }
+                        return (<>
+                                                                {val.questionType.length
                                 ?
-                                <span className={styles.ctgry_name}>
-                                    Category {val1.category}
-                                </span>
-                                :
-                                null
-                        } */}
-                                                        {val.questionType.length
-                            ?
-                                <>
-                                                                    {/* {
-                                        ind === 0
+                                    <>
+                                                                            {/* {
+                                            ind === 0
+                                                ?
+                                                <div>
+                                                    Category {val1.category}
+                                                </div>
+                                                :
+                                                null
+                                        } */}
+
+                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3}>
+                                                                                {isFirstCtShown
                                             ?
-                                            <div>
-                                                Category {val1.category}
-                                            </div>
+                                                <span className={finalTestWithAnsStl_module_css_1.default.ctgry_name}>
+                                                                                            Category {val1.category}
+                                                                                        </span>
                                             :
-                                            null
-                                    } */}
-
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3}>
-                                                                        {isFirstCtShown
-                                        ?
-                                            <span className={finalTestWithAnsStl_module_css_1.default.ctgry_name}>
-                                                                                    Category {val1.category}
-                                                                                </span>
-                                        :
-                                            null}
-                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                            Ընտրովի պատասխանով առաջադրանքներ
-                                                                        </div>
-
-                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2}>
-                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3}>
-                                                                                {[...new Array(Number(val.questionType.length))].map((val1, ind) => {
-                                        if (ind < num) {
-                                            countBg += 1;
-                                            return (<>
-                                                                                                    {(ind % 20 === 0) || ind === 0
-                                                    ?
-                                                        <>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_1}>
-                                                                                                                    Պատասխանի համարը
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_2}>
-                                                                                                                    <span>a</span>
-                                                                                                                    <span>b</span>
-                                                                                                                    <span>c</span>
-                                                                                                                    <span>d</span>
-                                                                                                                </div>
-                                                                                                            </>
-                                                    : null}
-                                                                                                    <div key={ind} className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1}>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_1}>
-                                                                                                            {countBg}
-                                                                                                        </div>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2}>
-                                                                                                            <form action="">
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                                    <input type="radio" name='1'/>
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                                    <input type="radio" name='1'/>
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                                    <input type="radio" name='1'/>
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                                    <input type="radio" name='1'/>
-                                                                                                                </div>
-                                                                                                            </form>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    {((ind + 1) % 20 === 0 && ind !== 0) || ind === val.questionType.length - 1
-                                                    ?
-                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_2}>
-                                                                                                                <span>a</span>
-                                                                                                                <span>b</span>
-                                                                                                                <span>c</span>
-                                                                                                                <span>d</span>
-                                                                                                            </div> : null}
-                                                                                                </>);
-                                        }
-                                    })}
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    {val.questionType.length - num > 0
-                                        ?
-                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_b}>
+                                                null}
                                                                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
                                                                                     Ընտրովի պատասխանով առաջադրանքներ
                                                                                 </div>
 
                                                                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2}>
                                                                                     <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3}>
-                                                                                        {[...new Array(Number(val.questionType.length - num))].map((val1, ind) => {
-                                                    if (ind < num) {
-                                                        countBg += 1;
-                                                        return (<>
+                                                                                        {val.questionType.map((val1, ind) => {
+                                            if (ind < num) {
+                                                countBg += 1;
+                                                // indNum += 1
+                                                indNum += 1;
+                                                console.log(indNum, 'indNum');
+                                                // console.log(val.questionType[indNum - 1], 'val.questionType')
+                                                return (<>
                                                                                                             {(ind % 20 === 0) || ind === 0
-                                                                ?
-                                                                    <>
+                                                        ?
+                                                            <>
                                                                                                                         <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_1}>
                                                                                                                             Պատասխանի համարը
                                                                                                                         </div>
@@ -474,1000 +426,1138 @@ const FinalTestWithAnseComp = () => {
                                                                                                                             <span>d</span>
                                                                                                                         </div>
                                                                                                                     </>
-                                                                : null}
+                                                        : null}
                                                                                                             <div key={ind} className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1}>
                                                                                                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_1}>
                                                                                                                     {countBg}
                                                                                                                 </div>
                                                                                                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2}>
                                                                                                                     <form action="">
-                                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                                            <input type="radio" name='1'/>
-                                                                                                                        </div>
-                                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                                            <input type="radio" name='1'/>
-                                                                                                                        </div>
-                                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                                            <input type="radio" name='1'/>
-                                                                                                                        </div>
-                                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                                            <input type="radio" name='1'/>
-                                                                                                                        </div>
+                                                                                                                        {[...new Array(4)].map((val5, ind) => {
+                                                        // console.log(val.questionType, 'val.questionType')
+                                                        // console.log(val.questionType[indNum - 1].chckbxIndex, 'val.questionType[indNum - 1].chckbxIndex')
+                                                        if (ind === val.questionType[indNum - 1].chckbxIndex) {
+                                                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                            <input type="radio" name='1' checked/>
+                                                                                                                                        </div>);
+                                                        }
+                                                        else {
+                                                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                            <input type="radio" name='1'/>
+                                                                                                                                        </div>);
+                                                        }
+                                                    })}
+                                                                                                                        {/* <div className={styles.test_content_third_content_3_2_3_1_2_1}>
+                                                        <input type="radio" name='1' />
+                                                    </div>
+                                                    <div className={styles.test_content_third_content_3_2_3_1_2_1}>
+                                                        <input type="radio" name='1' />
+                                                    </div>
+                                                    <div className={styles.test_content_third_content_3_2_3_1_2_1}>
+                                                        <input type="radio" name='1' />
+                                                    </div>
+                                                    <div className={styles.test_content_third_content_3_2_3_1_2_1}>
+                                                        <input type="radio" name='1' />
+                                                    </div> */}
                                                                                                                     </form>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                             {((ind + 1) % 20 === 0 && ind !== 0) || ind === val.questionType.length - 1
-                                                                ?
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_2}>
+                                                        ?
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_2}>
                                                                                                                         <span>a</span>
                                                                                                                         <span>b</span>
                                                                                                                         <span>c</span>
                                                                                                                         <span>d</span>
                                                                                                                     </div> : null}
                                                                                                         </>);
-                                                    }
-                                                })}
+                                            }
+                                        })}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                        :
-                                            null}
-                                                                </>
-                            :
-                                null}
-                                                    </>);
-                }
-                else if (val.uniqName === 'short') {
-                    // secNum = Math.floor(13 / 3)
-                    // secBNum = Math.ceil(13 / 3)
-                    // lstNum = 13 - (Math.floor(13 / 3) * 3)
-                    secNum = Math.floor(val.questionType.length / 3);
-                    secBNum = Math.ceil(val.questionType.length / 3);
-                    lstNum = val.questionType.length - (Math.floor(val.questionType.length / 3) * 3);
-                    // secNum = Math.floor(5 / 3)
-                    // secBNum = Math.ceil(5 / 3)
-                    // lstNum = 5 - (Math.floor(5 / 3) * 3)
-                    // debugger
-                    return (
-                    // val.questionType.length > 0
-                    //     ?
-                    <>
-                                                        {/* {
-                            ind === 0
-                                ?
-                                <div>
-                                    Category {val1.category}
-                                </div>
-                                :
-                                null
-                        } */}
-                                                        {val.questionType.length - num < 4 && val.questionType.length - num !== 0 && secNum
-                            ?
-                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
-                                                                    {isFirstCtShown
-                                        ?
-                                            <span className={finalTestWithAnsStl_module_css_1.default.ctgry_name}>
-                                                                                Category {val1.category}
-                                                                            </span>
-                                        :
-                                            null}
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                        Կարճ պատասխանով առաջադրանքներwssss
-                                                                    </div>
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
-                                                                        {[...new Array(secNum)].map((val1, ind1) => {
-                                        minNum = 3;
-                                        return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
-                                                                                        {[...new Array(3)].map((val2, ind2) => {
-                                                countBg += 1;
-                                                return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
-                                                                                                            {countBg}
-                                                                                                        </div>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
 
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>);
-                                            })}
-                                                                                    </div>);
-                                    })}
-                                                                    </div>
-                                                                </div>
-                            :
-                                val.questionType.length - num > 4 && val.questionType.length - num < 8 && num !== 0
-                                    ?
-                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
+                                                                            {val.questionType.length - num > 0
+                                            ?
+                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_b}>
+                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
+                                                                                            Ընտրովի պատասխանով առաջադրանքներ
+                                                                                        </div>
 
-                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                            Կարճ պատասխանով առաջադրանքներ
-                                                                        </div>
-                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
-                                                                            {[...new Array(secNum)].map((val1, ind1) => {
-                                                minNum = 2;
-                                                return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
-                                                                                            {[...new Array(3)].map((val2, ind2) => {
-                                                        countBg += 1;
-                                                        return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
-                                                                                                                {countBg}
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>);
+                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2}>
+                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3}>
+                                                                                                {[...new Array(Number(val.questionType.length - num))].map((val1, ind) => {
+                                                        // val.questionType.map((val1, ind) => {
+                                                        // console.log(val.questionType.length - (val.questionType.length - num), 'wweq')
+                                                        if (ind < num) {
+                                                            countBg += 1;
+                                                            // if (val.questionType.length >)
+                                                            indNum += 1;
+                                                            console.log(indNum, 'indNum22');
+                                                            return (<>
+                                                                                                                    {(ind % 20 === 0) || ind === 0
+                                                                    ?
+                                                                        <>
+                                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_1}>
+                                                                                                                                    Պատասխանի համարը
+                                                                                                                                </div>
+                                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_2}>
+                                                                                                                                    <span>a</span>
+                                                                                                                                    <span>b</span>
+                                                                                                                                    <span>c</span>
+                                                                                                                                    <span>d</span>
+                                                                                                                                </div>
+                                                                                                                            </>
+                                                                    : null}
+                                                                                                                    <div key={ind} className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1}>
+                                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_1}>
+                                                                                                                            {countBg}
+                                                                                                                        </div>
+                                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2}>
+                                                                                                                            <form action="">
+                                                                                                                                {[...new Array(4)].map((val3, ind2) => {
+                                                                    // console.log(val1.chckbxIndex, 'val1.chckbxIndex')
+                                                                    // console.log(val.questionType, indNum, 'val.questionType')
+                                                                    // if (ind < val.questionType.length) {
+                                                                    if (ind2 === val.questionType[indNum - 1].chckbxIndex) {
+                                                                        // if (ind2 === 0) {
+                                                                        return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                                    <input type="radio" name='1' checked/>
+                                                                                                                                                </div>);
+                                                                    }
+                                                                    else {
+                                                                        return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                                    <input type="radio" name='1'/>
+                                                                                                                                                </div>);
+                                                                    }
+                                                                    // }
+                                                                })}
+                                                                                                                            </form>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    {((ind + 1) % 20 === 0 && ind !== 0) || ind === val.questionType.length - num - 1
+                                                                    ?
+                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_2}>
+                                                                                                                                <span>a</span>
+                                                                                                                                <span>b</span>
+                                                                                                                                <span>c</span>
+                                                                                                                                <span>d</span>
+                                                                                                                            </div> : null}
+                                                                                                                </>);
+                                                        }
                                                     })}
-                                                                                        </div>);
-                                            })}
-                                                                        </div>
-                                                                    </div>
-                                    : null}
-
-                                                        {secNum - minNum > 0
-                            ?
-                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
-
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                        Կարճ պատասխանով առաջադրանքներccc
-                                                                    </div>
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
-                                                                        {[...new Array(secNum - minNum)].map((val1, ind1) => {
-                                        return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
-                                                                                        {[...new Array(3)].map((val2, ind2) => {
-                                                countBg += 1;
-                                                return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
-                                                                                                            {countBg}
-                                                                                                        </div>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>);
-                                            })}
-                                                                                    </div>);
-                                    })}
-                                                                    </div>
-                                                                </div>
-                            :
-                                null}
-
-                                                        {secBNum > 0 && lstNum !== 0
-                            // secBNum - secNum
-                            ?
-                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
-
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                        Կարճ պատասխանով առաջադրանքներ111
-                                                                    </div>
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
-                                                                        {[...new Array(secBNum - secNum)].map((val1, ind1) => {
-                                        return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
-                                                                                        {[...new Array(lstNum)].map((val2, ind2) => {
-                                                countBg += 1;
-                                                return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
-                                                                                                            {countBg}
-                                                                                                        </div>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>);
-                                            })}
-                                                                                    </div>);
-                                    })}
-                                                                    </div>
-                                                                </div>
-                            :
-                                null}
-
-
-
-                                                    </>
-                    // :
-                    // null
-                    );
-                }
-                else if (val.uniqName === 'shortandvariant') {
-                    // let secNum = Math.floor(val.questionType.length / 4)
-                    // thirdNum = Math.ceil(17 / 8)
-                    // currentNum = 17
-                    // currentNumClone = 17
-                    thirdNum = Math.ceil(val.questionType.length / 8);
-                    currentNum = val.questionType.length;
-                    currentNumClone = val.questionType.length;
-                    // debugger
-                    // let lstNum = val.questionType.length - (Math.floor(val.questionType.length / 3) * 3)
-                    console.log(thirdNum, lstNum, secBNum - secNum, 'secBNum');
-                    return (<>
-                                                        {/* {
-                            ind === 0
-                                ?
-                                <div>
-                                    Category {val1.category}
-                                </div>
-                                :
-                                null
-                        } */}
-
-
-                                                        {[...new Array(thirdNum)].map((val2, ind2) => {
-                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
-                                                                        {isFirstCtShown
-                                    ?
-                                        <span className={finalTestWithAnsStl_module_css_1.default.ctgry_name}>
-                                                                                    Category {val1.category}
-                                                                                </span>
-                                    :
-                                        null}
-                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                            pntrument2
-                                                                        </div>
-                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
-
-                                                                            {/* {
-                                            ind1 === 0
-                                                ? */}
-                                                                            <div>
-                                                                                <div>
-                                                                                    chisht e
-                                                                                </div>
-
-                                                                                <div>
-                                                                                    sxal e
-                                                                                </div>
-                                                                            </div>
-                                                                            {/* :
-                                                null
-                                        } */}
-                                                                            <div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
-                                                                                {[...new Array(currentNum < 4 ? currentNum : 4)].map((val2, ind2) => {
-                                    countBg += 1;
-                                    currentNum -= 1;
-                                    currentNumClone -= 1;
-                                    return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1}>
-                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_1}>
-                                                                                                    {countBg}
-                                                                                                </div>
-                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2}>
-                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2_1}>
-                                                                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-
-                                                                                                    </div>
-                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2_2}>
-                                                                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>);
-                                })}
-                                                                            </div>
-
-                                                                            {currentNumClone > 0
-                                    ?
-                                        <>
-                                                                                        <div>
-                                                                                            <div>
-                                                                                                chisht e
-                                                                                            </div>
-
-                                                                                            <div>
-                                                                                                sxal e
                                                                                             </div>
                                                                                         </div>
-                                                                                        {/* :
-                                                null
-                                        } */}
-                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
+                                                                                    </div>
+                                            :
+                                                null}
+                                                                        </>
+                                :
+                                    null}
+                                                            </>);
+                    }
+                    else if (val.uniqName === 'shortandvariant') {
+                        // let secNum = Math.floor(val.questionType.length / 4)
+                        thirdNum = Math.ceil(val.questionType.length / 8);
+                        currentNum = val.questionType.length;
+                        currentNumClone = val.questionType.length;
+                        // debugger
+                        // let lstNum = val.questionType.length - (Math.floor(val.questionType.length / 3) * 3)
+                        console.log(thirdNum, lstNum, secBNum - secNum, 'secBNum');
+                        // debugger
+                        return (<>
+                                                                {/* {
+                        ind === 0
+                            ?
+                            <div>
+                                Category {val1.category}
+                            </div>
+                            :
+                            null
+                    } */}
+
+
+                                                                {[...new Array(thirdNum)].map((val2, ind2) => {
+                                return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
+                                                                                {ind2 === 0
+                                        ?
+                                            <span className={finalTestWithAnsStl_module_css_1.default.ctgry_name_c}>
+                                                                                            Category {val1.category}
+                                                                                        </span>
+                                        :
+                                            null}
+
+
+                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title_233}>
+                                                                                    pntrument2
+                                                                                </div>
+                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_b}>
+                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item}>
+
+
+                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_in_title}>
+                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_in_title_1}>
+                                                                                                Ճիշտ է
+                                                                                            </div>
+
+                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_in_title_1}>
+                                                                                                Սխալ է
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content_b}>
                                                                                             {[...new Array(currentNum < 4 ? currentNum : 4)].map((val2, ind2) => {
-                                                countBg += 1;
-                                                currentNum -= 1;
-                                                currentNumClone -= 1;
-                                                return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1}>
+                                        countBg += 1;
+                                        currentNum -= 1;
+                                        currentNumClone -= 1;
+                                        indNum += 1;
+                                        console.log(val.questionType[indNum - 1].thirdTypeQsAnswers);
+                                        return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1}>
                                                                                                             <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_1}>
                                                                                                                 {countBg}
                                                                                                             </div>
                                                                                                             <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2}>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
 
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2_2}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                                </div>
+                                                                                                                {val.questionType[indNum - 1].thirdTypeQsAnswers === 'yes'
+                                                ?
+                                                    <>
+                                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                <input type="radio" name={`${indNum}`} checked/>
+                                                                                                                            </div>
+                                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                <input type="radio" name={`${indNum}`}/>
+                                                                                                                            </div>
+                                                                                                                        </>
+                                                :
+                                                    <>
+
+                                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                <input type="radio" name={`${indNum}`}/>
+                                                                                                                            </div>
+                                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                <input type="radio" name={`${indNum}`} checked/>
+                                                                                                                            </div>
+                                                                                                                        </>}
                                                                                                             </div>
                                                                                                         </div>);
-                                            })}
+                                    })}
                                                                                         </div>
-                                                                                    </>
-                                    :
-                                        null}
+                                                                                    </div>
 
-
-                                                                        </div>
-                                                                    </div>);
-                        })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                    </>);
-                }
-                else {
-                    return (<>
-                                                        {val.questionType.length - num < 4 && val.questionType.length - num !== 0 && secNum
-                            ?
-                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
-                                                                    {isFirstCtShown
+                                                                                    {currentNumClone > 0
                                         ?
-                                            <span className={finalTestWithAnsStl_module_css_1.default.ctgry_name}>
-                                                                                Category {val1.category}
-                                                                            </span>
+                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item}>
+                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_in_title}>
+                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_in_title_1}>
+                                                                                                        Ճիշտ է
+                                                                                                    </div>
+
+                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_in_title_1}>
+                                                                                                        Սխալ է
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                {/* :
+                                            null
+                                    } */}
+                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content_b}>
+                                                                                                    {[...new Array(currentNum < 4 ? currentNum : 4)].map((val2, ind2) => {
+                                                    countBg += 1;
+                                                    currentNum -= 1;
+                                                    currentNumClone -= 1;
+                                                    indNum += 1;
+                                                    return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1}>
+                                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_1}>
+                                                                                                                        {countBg}
+                                                                                                                    </div>
+                                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2}>
+
+                                                                                                                        {val.questionType[indNum - 1].thirdTypeQsAnswers === 'yes'
+                                                            ?
+                                                                <>
+                                                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                        <input type="radio" name={`${indNum}`} checked/>
+                                                                                                                                    </div>
+                                                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                        <input type="radio" name={`${indNum}`}/>
+                                                                                                                                    </div>
+                                                                                                                                </>
+                                                            :
+                                                                <>
+
+                                                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                        <input type="radio" name={`${indNum}`}/>
+                                                                                                                                    </div>
+                                                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                                                                                        <input type="radio" name={`${indNum}`} checked/>
+                                                                                                                                    </div>
+                                                                                                                                </>}
+                                                                                                                    </div>
+                                                                                                                </div>);
+                                                })}
+                                                                                                </div>
+                                                                                            </div>
                                         :
                                             null}
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                        Կարճ պատասխանով առաջադրանքներwssss
-                                                                    </div>
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
-                                                                        {[...new Array(secNum)].map((val1, ind1) => {
-                                        minNum = 3;
-                                        return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
-                                                                                        {[...new Array(3)].map((val2, ind2) => {
-                                                countBg += 1;
-                                                return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
-                                                                                                            {countBg}
-                                                                                                        </div>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
 
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>);
-                                            })}
-                                                                                    </div>);
-                                    })}
-                                                                    </div>
-                                                                </div>
-                            :
-                                val.questionType.length - num > 4 && val.questionType.length - num < 8 && num !== 0
+
+                                                                                </div>
+                                                                            </div>);
+                            })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            </>);
+                    }
+                    else if (val.uniqName === 'shortbtype') {
+                        f = val.questionType.length;
+                        forthNum = Math.ceil(val.questionType.length / 5);
+                        forthBNum = val.questionType.length - (Math.floor(val.questionType.length / 5) * 5);
+                        // f = 10
+                        // forthNum = Math.ceil(10 / 5)
+                        // forthBNum = 10 - (Math.floor(10 / 5) * 5)
+                        return (<>
+                                                                {/* {
+                                ind === 0 && isFirstCtShown
                                     ?
-                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
+                                    <div>
+                                        Category {val1.category}
+                                    </div>
+                                    :
+                                    null
+                            } */}
 
-                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                            Կարճ պատասխանով առաջադրանքներ
-                                                                        </div>
-                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
-                                                                            {[...new Array(secNum)].map((val1, ind1) => {
-                                                minNum = 2;
-                                                return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
-                                                                                            {[...new Array(3)].map((val2, ind2) => {
-                                                        countBg += 1;
-                                                        return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
+                                                                {[...new Array(forthNum === 1 ? 1 : forthNum)].map((val5, ind) => {
+                                if (forthNum === 1) {
+                                    return (<>
+                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.ctgry_name_vfwe}>
+                                                                                        {val1.category === 'B'
+                                            ?
+                                                <span className={finalTestWithAnsStl_module_css_1.default.ctgry_name_b}>
+                                                                                                    Category {val1.category}
+                                                                                                </span>
+                                            :
+                                                null}
+                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
+                                                                                            Կարճ պատասխանով առաջադրանքներ
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            {[...new Array(f)].map((val1) => {
+                                            countBg += 1;
+                                            indNum += 1;
+                                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_dw}>
+                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1_dw}>
                                                                                                                 {countBg}
                                                                                                             </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_bbsw}>
+                                                                                                                <input type="text" name='short1' value={val.questionType[indNum - 1].forthTypeBQsAnswers} maxLength={1}/>
 
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                                </div>
-                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                                </div>
                                                                                                             </div>
                                                                                                         </div>);
-                                                    })}
-                                                                                        </div>);
-                                            })}
+                                        })}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </>);
+                                }
+                                else if (ind + 1 === forthNum && forthNum - Math.floor(10 / 5) !== 0) {
+                                    return (<div className={finalTestWithAnsStl_module_css_1.default.ctgry_name_vfwe}>
+
+                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
+                                                                                        Groviiii առաջադրանքներw333
+                                                                                    </div>
+                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title_dwq}>
+                                                                                        {[...new Array(forthBNum)].map((val1) => {
+                                            countBg += 1;
+                                            indNum += 1;
+                                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_dw}>
+                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1_dw}>
+                                                                                                            {countBg}
+                                                                                                        </div>
+                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_bbsw}>
+                                                                                                            <input type="text" name='short1' value={val.questionType[indNum - 1].forthTypeBQsAnswers} maxLength={1}/>
+
+                                                                                                        </div>
+                                                                                                    </div>);
+                                        })}
+                                                                                    </div>
+                                                                                </div>);
+                                }
+                                else {
+                                    return (<>
+                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.ctgry_name_vfwe}>
+                                                                                        {ind === 0 && val1.category === 'B'
+                                            ?
+                                                <span className={finalTestWithAnsStl_module_css_1.default.ctgry_name_b}>
+                                                                                                    Category {val1.category}
+                                                                                                </span>
+                                            :
+                                                null}
+                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_tdwe}>
+                                                                                            {ind === 0
+                                            ?
+                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title_we2}>
+                                                                                                        <span>Groviiii</span> <span>առաջադրանքներw222</span>
+                                                                                                    </div>
+                                            :
+                                                null}
+                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_ovrle}>
+                                                                                                {[...new Array(5)].map((val1) => {
+                                            countBg += 1;
+                                            indNum += 1;
+                                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_dw}>
+                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1_dw}>
+                                                                                                                    {countBg}
+                                                                                                                </div>
+                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_bbsw}>
+                                                                                                                    <input type="text" name='short1' value={val.questionType[indNum - 1].forthTypeBQsAnswers} maxLength={1}/>
+
+                                                                                                                </div>
+                                                                                                            </div>);
+                                        })}
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </>);
+                                }
+                            })}
+
+
+
+
+
+
+                                                            </>);
+                    }
+                    else if (val.uniqName === 'short') {
+                        // secNum = Math.floor(13 / 3)
+                        // secBNum = Math.ceil(13 / 3)
+                        // lstNum = 13 - (Math.floor(13 / 3) * 3)
+                        secNum = Math.floor(val.questionType.length / 5);
+                        secBNum = Math.ceil(val.questionType.length / 5);
+                        lstNum = val.questionType.length - (Math.floor(val.questionType.length / 5) * 5);
+                        // secNum = Math.floor(5 / 3)
+                        // secBNum = Math.ceil(5 / 3)
+                        // lstNum = 5 - (Math.floor(5 / 3) * 3)
+                        // debugger
+                        return (
+                        // val.questionType.length > 0
+                        //     ?
+                        <>
+                                                                {ind === 0 && isFirstCtShown
+                                ?
+                                    <div className={finalTestWithAnsStl_module_css_1.default.ctgry_name_b}>
+                                                                            Category {val1.category}
                                                                         </div>
-                                                                    </div>
-                                    : null}
+                                :
+                                    null}
+                                                                {val.questionType.length - num < 4 && val.questionType.length - num !== 0 && secNum
+                                ?
+                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
+                                                                            {/* {
+                                            ind === 0 && isFirstCtShown
+                                                ?
+                                                <span className={styles.ctgry_name}>
+                                                    Category {val1.category}
+                                                </span>
+                                                :
+                                                null
+                                        } */}
+                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
+                                                                                Կարճ պատասխանով առաջադրանքներwssss
+                                                                            </div>
+                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
+                                                                                {[...new Array(secNum)].map((val1, ind1) => {
+                                            minNum = 3;
+                                            return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
+                                                                                                {[...new Array(5)].map((val2, ind2) => {
+                                                    var _a;
+                                                    countBg += 1;
+                                                    indNum += 1;
+                                                    let itmArr = [];
+                                                    if (val.questionType[indNum - 1].secTypeQsAnswers) {
+                                                        for (let i in val.questionType[indNum - 1].secTypeQsAnswers) {
+                                                            itmArr.push((_a = val.questionType[indNum - 1].secTypeQsAnswers) === null || _a === void 0 ? void 0 : _a[`${i}`]);
+                                                        }
+                                                    }
+                                                    console.log(itmArr, 'itmArr');
+                                                    return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
+                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
+                                                                                                                    {countBg}
+                                                                                                                </div>
+                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
+                                                                                                                    {itmArr.map((val, ind) => {
+                                                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
+                                                                                                                                    <input type="text" name='short1' value={val} maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
 
-                                                        {secNum - minNum > 0
-                            ?
-                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
+                                                                                                                                </div>);
+                                                        })}
+                                                                                                                    {/* <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
 
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                        Կարճ պատասխանով առաջադրանքներccc
-                                                                    </div>
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
-                                                                        {[...new Array(secNum - minNum)].map((val1, ind1) => {
-                                        return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
-                                                                                        {[...new Array(3)].map((val2, ind2) => {
-                                                countBg += 1;
-                                                return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
-                                                                                                            {countBg}
-                                                                                                        </div>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div> */}
+                                                                                                                </div>
+                                                                                                            </div>);
+                                                })}
+                                                                                            </div>);
+                                        })}
+                                                                            </div>
+                                                                        </div>
+                                :
+                                    val.questionType.length - num > 4 && val.questionType.length - num < 8 && num !== 0
+                                        ?
+                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
+                                                                                {/* {
+                                                    ind === 0 && isFirstCtShown
+                                                        ?
+                                                        <span className={styles.ctgry_name}>
+                                                            Category {val1.category}
+                                                        </span>
+                                                        :
+                                                        null
+                                                } */}
+                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
+                                                                                    Կարճ պատասխանով առաջադրանքներ
+                                                                                </div>
+                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
+                                                                                    {[...new Array(secNum)].map((val1, ind1) => {
+                                                    minNum = 2;
+                                                    return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
+                                                                                                    {[...new Array(5)].map((val2, ind2) => {
+                                                            var _a;
+                                                            countBg += 1;
+                                                            indNum += 1;
+                                                            let itmArr = [];
+                                                            if (val.questionType[indNum - 1].secTypeQsAnswers) {
+                                                                for (let i in val.questionType[indNum - 1].secTypeQsAnswers) {
+                                                                    itmArr.push((_a = val.questionType[indNum - 1].secTypeQsAnswers) === null || _a === void 0 ? void 0 : _a[`${i}`]);
+                                                                }
+                                                            }
+                                                            console.log(itmArr, 'itmArr');
+                                                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
+                                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
+                                                                                                                        {countBg}
+                                                                                                                    </div>
+                                                                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
+                                                                                                                        {itmArr.map((val, ind) => {
+                                                                    return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
+                                                                                                                                        <input type="text" name='short1' value={val} maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
 
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>);
-                                            })}
-                                                                                    </div>);
-                                    })}
-                                                                    </div>
+                                                                                                                                    </div>);
+                                                                })}
+                                                                                                                        {/* <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                                    <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+
                                                                 </div>
-                            :
-                                null}
-
-                                                        {secBNum > 0 && lstNum !== 0
-                            // secBNum - secNum
-                            ?
-                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
-
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
-                                                                        Կարճ պատասխանով առաջադրանքներ111
-                                                                    </div>
-                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
-                                                                        {[...new Array(secBNum - secNum)].map((val1, ind1) => {
-                                        return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
-                                                                                        {[...new Array(lstNum)].map((val2, ind2) => {
-                                                countBg += 1;
-                                                return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
-                                                                                                            {countBg}
-                                                                                                        </div>
-                                                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
-                                                                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>);
-                                            })}
-                                                                                    </div>);
-                                    })}
-                                                                    </div>
+                                                                <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                                    <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
                                                                 </div>
-                            :
-                                null}
-                                                    </>);
-                }
-                // else if (val.uniqName === 'short') {
-                //     infoSecSettings = Math.ceil(Number(val.countValue) / 3)
-                //     let isSecLoopEnd = false
-                //     let lastSecIndex = 0
-                //     return (
-                //         <>
-                //             <div className={styles.test_content_third_content_3_content_d}>
-                //                 {
-                //                     Number((Number(val.countValue) / 19).toFixed(1)[infoSttngs.toFixed(1).length - 1]) >= 7
-                //                         ?
-                //                         null
-                //                         :
-                //                         <div className={styles.test_content_third_content_3_title}>
-                //                             Կարճ պատասխանով առաջադրանքներ
-                //                         </div>
-                //                 }
-                //                 <div className={styles.test_content_third_content_3_content_f}>
-                //                     {
-                //                         Number((Number(val.countValue) / 19).toFixed(1)[infoSttngs.toFixed(1).length - 1]) < 5
-                //                             ?
-                //                             [...new Array(infoSecSettings)].map((val1, ind) => {
-                //                                 startIndex = 3
-                //                                 startIndexCount = 2
-                //                                 startSecIndexCount = 2
-                //                                 // debugger
-                //                                 if (ind > 1) {
-                //                                     return null
-                //                                 }
-                //                                 isSecLoopEnd = false
-                //                                 return (
-                //                                     <div className={styles.test_content_third_content_4}>
-                //                                         {/* <div className={styles.test_content_third_content_3_title}>
-                //                 Կարճ պատասխանով առաջադրանքներ
-                //             </div> */}
-                //                                         <div className={styles.test_content_third_content_4_1_b}>
-                //                                             <div className={styles.test_content_third_content_4_1_overlay}>
-                //                                                 {
-                //                                                     [...new Array(Number(val.countValue))].map((val1, ind1) => {
-                //                                                         // debugger
-                //                                                         if (!isSecLoopEnd && ind1 > lastSecIndex || ind === 0 && ind1 === 0) {
-                //                                                             if (ind1 % 3 === 0 && ind1 !== 0) {
-                //                                                                 isSecLoopEnd = true
-                //                                                                 lastSecIndex = ind1
-                //                                                                 return null
-                //                                                             } else {
-                //                                                                 countBg += 1
-                //                                                                 return (
-                //                                                                     <div key={ind} className={styles.test_content_third_content_4_1_1}>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_1}>
-                //                                                                             {countBg}
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2}>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                         </div>
-                //                                                                     </div>
-                //                                                                 )
-                //                                                             }
-                //                                                         } else if (ind1 === lastSecIndex) {
-                //                                                             countBg += 1
-                //                                                             return (
-                //                                                                 (
-                //                                                                     <div key={ind} className={styles.test_content_third_content_4_1_1}>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_1}>
-                //                                                                             {countBg}
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2}>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                             </div>
-                //                                                                         </div>
-                //                                                                     </div>
-                //                                                                 )
-                //                                                             )
-                //                                                         }
-                //                                                     })
-                //                                                 }
-                //                                             </div>
-                //                                         </div>
-                //                                     </div>
-                //                                 )
-                //                             })
-                //                             :
-                //                             Number((Number(val.countValue) / 19).toFixed(1)[infoSttngs.toFixed(1).length - 1]) > 5 && Number((Number(chAnsQuestCountItem.chooseAnswerQuest) / 19).toFixed(1)[infoSttngs.toFixed(1).length - 1]) < 7
-                //                                 ?
-                //                                 [...new Array(infoSecSettings)].map((val2, ind) => {
-                //                                     startIndex = 5
-                //                                     startIndexCount = 1
-                //                                     startSecIndexCount = 1
-                //                                     // debugger
-                //                                     if (ind > 0) {
-                //                                         return null
-                //                                     }
-                //                                     isSecLoopEnd = false
-                //                                     return (
-                //                                         <div className={styles.test_content_third_content_4}>
-                //                                             <div className={styles.test_content_third_content_3_title}>
-                //                                                 Կարճ պատասխանով առաջադրանքներ
-                //                                             </div>
-                //                                             <div className={styles.test_content_third_content_4_1_b}>
-                //                                                 <div className={styles.test_content_third_content_4_1_overlay}>
-                //                                                     {
-                //                                                         [...new Array(Number(val.countValue))].map((val1, ind1) => {
-                //                                                             // debugger
-                //                                                             if (!isSecLoopEnd && ind1 > lastSecIndex || ind === 0 && ind1 === 0) {
-                //                                                                 if (ind1 % 3 === 0 && ind1 !== 0) {
-                //                                                                     isSecLoopEnd = true
-                //                                                                     lastSecIndex = ind1
-                //                                                                     return null
-                //                                                                 } else {
-                //                                                                     countBg += 1
-                //                                                                     return (
-                //                                                                         <div key={ind} className={styles.test_content_third_content_4_1_1}>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_1}>
-                //                                                                                 {countBg}
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2}>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                             </div>
-                //                                                                         </div>
-                //                                                                     )
-                //                                                                 }
-                //                                                             } else if (ind1 === lastSecIndex) {
-                //                                                                 countBg += 1
-                //                                                                 return (
-                //                                                                     (
-                //                                                                         <div key={ind} className={styles.test_content_third_content_4_1_1}>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_1}>
-                //                                                                                 {countBg}
-                //                                                                             </div>
-                //                                                                             <div className={styles.test_content_third_content_4_1_1_2}>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                                 </div>
-                //                                                                             </div>
-                //                                                                         </div>
-                //                                                                     )
-                //                                                                 )
-                //                                                             }
-                //                                                         })
-                //                                                     }
-                //                                                 </div>
-                //                                             </div>
-                //                                         </div>
-                //                                     )
-                //                                 })
-                //                                 :
-                //                                 null
-                //                     }
-                //                 </div>
-                //             </div>
-                //             <div className={styles.test_content_third_content_3_content_d}>
-                //                 <div className={styles.test_content_third_content_3_title}>
-                //                     Կարճ պատասխանով առաջադրանքներ
-                //                 </div>
-                //                 <div className={styles.test_content_third_content_3_content_d_item}>
-                //                     {
-                //                         [...new Array(infoSecSettings)].map((val2, ind) => {
-                //                             // ddddddddd
-                //                             // debugger
-                //                             if (startIndexCount !== 0) {
-                //                                 startIndexCount--
-                //                                 return null
-                //                             }
-                //                             // if (ind >= (Math.floor((infoSecSettings - startSecIndexCount) / 4) * 4) + startSecIndexCount) {
-                //                             //     return null
-                //                             // }
-                //                             lastSeccIndex = ind
-                //                             console.log((Math.floor((infoSecSettings - startSecIndexCount) / 4) * 4) + startSecIndexCount, 'infoSecSettings - startSecIndexCount) / 4')
-                //                             ind = startIndex + ind
-                //                             // debugger
-                //                             isSecLoopEnd = false
-                //                             return (
-                //                                 <div className={styles.test_content_third_content_4}>
-                //                                     {/* <div className={styles.test_content_third_content_3_title}>
-                //             Կարճ պատասխանով առաջադրանքներ
-                //         </div>  */}
-                //                                     <div className={styles.test_content_third_content_4_1_b}>
-                //                                         <div className={styles.test_content_third_content_4_1_overlay}>
-                //                                             {
-                //                                                 [...new Array(Number(val.countValue))].map((val1, ind1) => {
-                //                                                     // debugger
-                //                                                     if (!isSecLoopEnd && ind1 > lastSecIndex || ind === 0 && ind1 === 0) {
-                //                                                         if (ind1 % 3 === 0 && ind1 !== 0) {
-                //                                                             isSecLoopEnd = true
-                //                                                             lastSecIndex = ind1
-                //                                                             return null
-                //                                                         } else {
-                //                                                             countBg += 1
-                //                                                             return (
-                //                                                                 <div key={ind} className={styles.test_content_third_content_4_1_1}>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_1}>
-                //                                                                         {countBg}
-                //                                                                     </div>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2}>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                     </div>
-                //                                                                 </div>
-                //                                                             )
-                //                                                         }
-                //                                                     } else if (ind1 === lastSecIndex) {
-                //                                                         countBg += 1
-                //                                                         return (
-                //                                                             (
-                //                                                                 <div key={ind} className={styles.test_content_third_content_4_1_1}>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_1}>
-                //                                                                         {countBg}
-                //                                                                     </div>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2}>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                         </div>
-                //                                                                     </div>
-                //                                                                 </div>
-                //                                                             )
-                //                                                         )
-                //                                                     }
-                //                                                 })
-                //                                             }
-                //                                         </div>
-                //                                     </div>
-                //                                 </div>
-                //                             )
-                //                         })
-                //                     }
-                //                 </div>
-                //             </div>
-                //         </>
-                //     )
-                // } else if (val.uniqName === 'shortandvariant') {
-                //     // debugger
-                //     infoThirdSettings = Math.ceil(Number(val.countValue) / 3)
-                //     let isThirdLoopEnd = false
-                //     let lastThirdIndex = 0
-                //     console.log(Math.floor((infoSecSettings - startSecIndexCount) / 4) * 4, 'ssss')
-                //     return (
-                //         <>
-                //             {
-                //                 [...new Array(infoThirdSettings)].map((val2, ind) => {
-                //                     if (startSecIndex > 0) {
-                //                         startSecIndex--
-                //                         return null
-                //                     }
-                //                     // console.log(Math.floor((((infoSecSettings - startSecIndexCount) / 4) * 4) + startSecIndexCount), 'ee')
-                //                     // console.log(infoThirdSettings - startIndexSecCount, 'infoThirdSettings - startIndexSecCount')
-                //                     // debugger
-                //                     // if (ind >= Math.floor((((infoSecSettings - startSecIndexCount) / 4) * 4) + startSecIndexCount) - startIndexSecCount) {
-                //                     //     return null
-                //                     // }
-                //                     lastThirddIndex = ind
-                //                     // debugger
-                //                     isThirdLoopEnd = false
-                //                     return (
-                //                         <div className={styles.test_content_third_content_4_b}>
-                //                             <div className={styles.test_content_third_content_4_1_2}>
-                //                                 <div className={styles.test_content_third_content_4_1_2_1}>
-                //                                     <div className={styles.test_content_third_content_4_1_2_1_1}>
-                //                                         {/* <div className={styles.test_content_third_content_4_1_2_1_1_1}></div> */}
-                //                                         <div className={styles.test_content_third_content_4_1_2_1_1_1_1}>
-                //                                             A
-                //                                         </div>
-                //                                         <div className={styles.test_content_third_content_4_1_2_1_1_1_1}>
-                //                                             B
-                //                                         </div>
-                //                                         <div className={styles.test_content_third_content_4_1_2_1_1_1_1}>
-                //                                             C
-                //                                         </div>
-                //                                         <div className={styles.test_content_third_content_4_1_2_1_1_1_1}>
-                //                                             D
-                //                                         </div>
-                //                                     </div>
-                //                                     <div className={styles.test_content_third_content_4_1_2_1_2}>
-                //                                         {
-                //                                             [...new Array(Number(val.countValue))].map((va1l, ind1) => {
-                //                                                 if (!isThirdLoopEnd && ind1 > lastThirdIndex || ind === 0 && ind1 === 0) {
-                //                                                     if (ind1 % 3 === 0 && ind1 !== 0) {
-                //                                                         isThirdLoopEnd = true
-                //                                                         lastThirdIndex = ind1
-                //                                                         return null
-                //                                                     } else {
-                //                                                         countBg += 1
-                //                                                         return (
-                //                                                             <div key={ind1} className={styles.test_content_third_content_4_1_1}>
-                //                                                                 <div className={styles.test_content_third_content_4_1_1_1}>
-                //                                                                     {countBg}
-                //                                                                 </div>
-                //                                                                 <div className={styles.test_content_third_content_4_1_1_2}>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                     </div>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                     </div>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                     </div>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                     </div>
-                //                                                                 </div>
-                //                                                             </div>
-                //                                                         )
-                //                                                     }
-                //                                                 } else if (ind1 === lastThirdIndex) {
-                //                                                     countBg += 1
-                //                                                     return (
-                //                                                         (
-                //                                                             <div key={ind} className={styles.test_content_third_content_4_1_1}>
-                //                                                                 <div className={styles.test_content_third_content_4_1_1_1}>
-                //                                                                     {countBg}
-                //                                                                 </div>
-                //                                                                 <div className={styles.test_content_third_content_4_1_1_2}>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                     </div>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                     </div>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                     </div>
-                //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
-                //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                //                                                                     </div>
-                //                                                                 </div>
-                //                                                             </div>
-                //                                                         )
-                //                                                     )
-                //                                                 }
-                //                                             })
-                //                                         }
-                //                                     </div>
-                //                                 </div>
-                //                             </div>
-                //                         </div>
-                //                     )
-                //                 })
-                //             }
-                //         </>
-                //     )
-                // }
-            })
+                                                                <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                                    <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                                </div>
+                                                                <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                                    <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                                </div>
+                                                                <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                                    <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                                </div> */}
+                                                                                                                    </div>
+                                                                                                                </div>);
+                                                        })}
+                                                                                                </div>);
+                                                })}
+                                                                                </div>
+                                                                            </div>
+                                        : null}
+
+                                                                {secNum - minNum > 0
+                                ?
+                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
+                                                                            {/* {
+                                            ind === 0 && isFirstCtShown
+                                                ?
+                                                <span className={styles.ctgry_name}>
+                                                    Category {val1.category}
+                                                </span>
+                                                :
+                                                null
+                                        } */}
+                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
+                                                                                Կարճ պատասխանով առաջադրանքներccc
+                                                                            </div>
+                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
+                                                                                {[...new Array(secNum - minNum)].map((val1, ind1) => {
+                                            return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
+                                                                                                {[...new Array(5)].map((val2, ind2) => {
+                                                    var _a;
+                                                    countBg += 1;
+                                                    indNum += 1;
+                                                    let itmArr = [];
+                                                    if (val.questionType[indNum - 1].secTypeQsAnswers) {
+                                                        for (let i in val.questionType[indNum - 1].secTypeQsAnswers) {
+                                                            itmArr.push((_a = val.questionType[indNum - 1].secTypeQsAnswers) === null || _a === void 0 ? void 0 : _a[`${i}`]);
+                                                        }
+                                                    }
+                                                    console.log(itmArr, 'itmArr');
+                                                    return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
+                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
+                                                                                                                    {countBg}
+                                                                                                                </div>
+                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
+                                                                                                                    {itmArr.map((val, ind) => {
+                                                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
+                                                                                                                                    <input type="text" name='short1' value={val} maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+
+                                                                                                                                </div>);
+                                                        })}
+                                                                                                                    {/* <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div> */}
+                                                                                                                </div>
+                                                                                                            </div>);
+                                                })}
+                                                                                            </div>);
+                                        })}
+                                                                            </div>
+                                                                        </div>
+                                :
+                                    null}
+
+                                                                {secBNum > 0 && lstNum !== 0
+                                // secBNum - secNum
+                                ?
+                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_content_d}>
+                                                                            {/* {
+                                            ind === 0 && isFirstCtShown
+                                                ?
+                                                <span className={styles.ctgry_name}>
+                                                    Category {val1.category}
+                                                </span>
+                                                :
+                                                null
+                                        } */}
+                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_title}>
+                                                                                Կարճ պատասխանով առաջադրանքներ111
+                                                                            </div>
+                                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw}>
+                                                                                {[...new Array(secBNum - secNum)].map((val1, ind1) => {
+                                            return (<div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content}>
+                                                                                                {[...new Array(lstNum)].map((val2, ind2) => {
+                                                    var _a;
+                                                    countBg += 1;
+                                                    indNum += 1;
+                                                    let itmArr = [];
+                                                    if (val.questionType[indNum - 1].secTypeQsAnswers) {
+                                                        for (let i in val.questionType[indNum - 1].secTypeQsAnswers) {
+                                                            itmArr.push((_a = val.questionType[indNum - 1].secTypeQsAnswers) === null || _a === void 0 ? void 0 : _a[`${i}`]);
+                                                        }
+                                                    }
+                                                    console.log(itmArr, 'itmArr');
+                                                    return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
+                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_1}>
+                                                                                                                    {countBg}
+                                                                                                                </div>
+                                                                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
+                                                                                                                    {itmArr.map((val, ind) => {
+                                                            return (<div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
+                                                                                                                                    <input type="text" name='short1' value={val} maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+
+                                                                                                                                </div>);
+                                                        })}
+                                                                                                                    {/* <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div>
+                                                        <div className={styles.test_content_third_content_4_1_1_2_1}>
+                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                                                        </div> */}
+                                                                                                                </div>
+                                                                                                            </div>);
+                                                })}
+                                                                                            </div>);
+                                        })}
+                                                                            </div>
+                                                                        </div>
+                                :
+                                    null}
+
+
+
+                                                            </>
+                        // :
+                        // null
+                        );
+                    }
+                    // else if (val.uniqName === 'short') {
+                    //     infoSecSettings = Math.ceil(Number(val.countValue) / 3)
+                    //     let isSecLoopEnd = false
+                    //     let lastSecIndex = 0
+                    //     return (
+                    //         <>
+                    //             <div className={styles.test_content_third_content_3_content_d}>
+                    //                 {
+                    //                     Number((Number(val.countValue) / 19).toFixed(1)[infoSttngs.toFixed(1).length - 1]) >= 7
+                    //                         ?
+                    //                         null
+                    //                         :
+                    //                         <div className={styles.test_content_third_content_3_title}>
+                    //                             Կարճ պատասխանով առաջադրանքներ
+                    //                         </div>
+                    //                 }
+                    //                 <div className={styles.test_content_third_content_3_content_f}>
+                    //                     {
+                    //                         Number((Number(val.countValue) / 19).toFixed(1)[infoSttngs.toFixed(1).length - 1]) < 5
+                    //                             ?
+                    //                             [...new Array(infoSecSettings)].map((val1, ind) => {
+                    //                                 startIndex = 3
+                    //                                 startIndexCount = 2
+                    //                                 startSecIndexCount = 2
+                    //                                 // debugger
+                    //                                 if (ind > 1) {
+                    //                                     return null
+                    //                                 }
+                    //                                 isSecLoopEnd = false
+                    //                                 return (
+                    //                                     <div className={styles.test_content_third_content_4}>
+                    //                                         {/* <div className={styles.test_content_third_content_3_title}>
+                    //                 Կարճ պատասխանով առաջադրանքներ
+                    //             </div> */}
+                    //                                         <div className={styles.test_content_third_content_4_1_b}>
+                    //                                             <div className={styles.test_content_third_content_4_1_overlay}>
+                    //                                                 {
+                    //                                                     [...new Array(Number(val.countValue))].map((val1, ind1) => {
+                    //                                                         // debugger
+                    //                                                         if (!isSecLoopEnd && ind1 > lastSecIndex || ind === 0 && ind1 === 0) {
+                    //                                                             if (ind1 % 3 === 0 && ind1 !== 0) {
+                    //                                                                 isSecLoopEnd = true
+                    //                                                                 lastSecIndex = ind1
+                    //                                                                 return null
+                    //                                                             } else {
+                    //                                                                 countBg += 1
+                    //                                                                 return (
+                    //                                                                     <div key={ind} className={styles.test_content_third_content_4_1_1}>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_1}>
+                    //                                                                             {countBg}
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2}>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                         </div>
+                    //                                                                     </div>
+                    //                                                                 )
+                    //                                                             }
+                    //                                                         } else if (ind1 === lastSecIndex) {
+                    //                                                             countBg += 1
+                    //                                                             return (
+                    //                                                                 (
+                    //                                                                     <div key={ind} className={styles.test_content_third_content_4_1_1}>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_1}>
+                    //                                                                             {countBg}
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2}>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                 <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                             </div>
+                    //                                                                         </div>
+                    //                                                                     </div>
+                    //                                                                 )
+                    //                                                             )
+                    //                                                         }
+                    //                                                     })
+                    //                                                 }
+                    //                                             </div>
+                    //                                         </div>
+                    //                                     </div>
+                    //                                 )
+                    //                             })
+                    //                             :
+                    //                             Number((Number(val.countValue) / 19).toFixed(1)[infoSttngs.toFixed(1).length - 1]) > 5 && Number((Number(chAnsQuestCountItem.chooseAnswerQuest) / 19).toFixed(1)[infoSttngs.toFixed(1).length - 1]) < 7
+                    //                                 ?
+                    //                                 [...new Array(infoSecSettings)].map((val2, ind) => {
+                    //                                     startIndex = 5
+                    //                                     startIndexCount = 1
+                    //                                     startSecIndexCount = 1
+                    //                                     // debugger
+                    //                                     if (ind > 0) {
+                    //                                         return null
+                    //                                     }
+                    //                                     isSecLoopEnd = false
+                    //                                     return (
+                    //                                         <div className={styles.test_content_third_content_4}>
+                    //                                             <div className={styles.test_content_third_content_3_title}>
+                    //                                                 Կարճ պատասխանով առաջադրանքներ
+                    //                                             </div>
+                    //                                             <div className={styles.test_content_third_content_4_1_b}>
+                    //                                                 <div className={styles.test_content_third_content_4_1_overlay}>
+                    //                                                     {
+                    //                                                         [...new Array(Number(val.countValue))].map((val1, ind1) => {
+                    //                                                             // debugger
+                    //                                                             if (!isSecLoopEnd && ind1 > lastSecIndex || ind === 0 && ind1 === 0) {
+                    //                                                                 if (ind1 % 3 === 0 && ind1 !== 0) {
+                    //                                                                     isSecLoopEnd = true
+                    //                                                                     lastSecIndex = ind1
+                    //                                                                     return null
+                    //                                                                 } else {
+                    //                                                                     countBg += 1
+                    //                                                                     return (
+                    //                                                                         <div key={ind} className={styles.test_content_third_content_4_1_1}>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_1}>
+                    //                                                                                 {countBg}
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2}>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                             </div>
+                    //                                                                         </div>
+                    //                                                                     )
+                    //                                                                 }
+                    //                                                             } else if (ind1 === lastSecIndex) {
+                    //                                                                 countBg += 1
+                    //                                                                 return (
+                    //                                                                     (
+                    //                                                                         <div key={ind} className={styles.test_content_third_content_4_1_1}>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_1}>
+                    //                                                                                 {countBg}
+                    //                                                                             </div>
+                    //                                                                             <div className={styles.test_content_third_content_4_1_1_2}>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                                 <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                                     <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                                 </div>
+                    //                                                                             </div>
+                    //                                                                         </div>
+                    //                                                                     )
+                    //                                                                 )
+                    //                                                             }
+                    //                                                         })
+                    //                                                     }
+                    //                                                 </div>
+                    //                                             </div>
+                    //                                         </div>
+                    //                                     )
+                    //                                 })
+                    //                                 :
+                    //                                 null
+                    //                     }
+                    //                 </div>
+                    //             </div>
+                    //             <div className={styles.test_content_third_content_3_content_d}>
+                    //                 <div className={styles.test_content_third_content_3_title}>
+                    //                     Կարճ պատասխանով առաջադրանքներ
+                    //                 </div>
+                    //                 <div className={styles.test_content_third_content_3_content_d_item}>
+                    //                     {
+                    //                         [...new Array(infoSecSettings)].map((val2, ind) => {
+                    //                             // ddddddddd
+                    //                             // debugger
+                    //                             if (startIndexCount !== 0) {
+                    //                                 startIndexCount--
+                    //                                 return null
+                    //                             }
+                    //                             // if (ind >= (Math.floor((infoSecSettings - startSecIndexCount) / 4) * 4) + startSecIndexCount) {
+                    //                             //     return null
+                    //                             // }
+                    //                             lastSeccIndex = ind
+                    //                             console.log((Math.floor((infoSecSettings - startSecIndexCount) / 4) * 4) + startSecIndexCount, 'infoSecSettings - startSecIndexCount) / 4')
+                    //                             ind = startIndex + ind
+                    //                             // debugger
+                    //                             isSecLoopEnd = false
+                    //                             return (
+                    //                                 <div className={styles.test_content_third_content_4}>
+                    //                                     {/* <div className={styles.test_content_third_content_3_title}>
+                    //             Կարճ պատասխանով առաջադրանքներ
+                    //         </div>  */}
+                    //                                     <div className={styles.test_content_third_content_4_1_b}>
+                    //                                         <div className={styles.test_content_third_content_4_1_overlay}>
+                    //                                             {
+                    //                                                 [...new Array(Number(val.countValue))].map((val1, ind1) => {
+                    //                                                     // debugger
+                    //                                                     if (!isSecLoopEnd && ind1 > lastSecIndex || ind === 0 && ind1 === 0) {
+                    //                                                         if (ind1 % 3 === 0 && ind1 !== 0) {
+                    //                                                             isSecLoopEnd = true
+                    //                                                             lastSecIndex = ind1
+                    //                                                             return null
+                    //                                                         } else {
+                    //                                                             countBg += 1
+                    //                                                             return (
+                    //                                                                 <div key={ind} className={styles.test_content_third_content_4_1_1}>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_1}>
+                    //                                                                         {countBg}
+                    //                                                                     </div>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2}>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                     </div>
+                    //                                                                 </div>
+                    //                                                             )
+                    //                                                         }
+                    //                                                     } else if (ind1 === lastSecIndex) {
+                    //                                                         countBg += 1
+                    //                                                         return (
+                    //                                                             (
+                    //                                                                 <div key={ind} className={styles.test_content_third_content_4_1_1}>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_1}>
+                    //                                                                         {countBg}
+                    //                                                                     </div>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2}>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                         <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                             <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                         </div>
+                    //                                                                     </div>
+                    //                                                                 </div>
+                    //                                                             )
+                    //                                                         )
+                    //                                                     }
+                    //                                                 })
+                    //                                             }
+                    //                                         </div>
+                    //                                     </div>
+                    //                                 </div>
+                    //                             )
+                    //                         })
+                    //                     }
+                    //                 </div>
+                    //             </div>
+                    //         </>
+                    //     )
+                    // } else if (val.uniqName === 'shortandvariant') {
+                    //     // debugger
+                    //     infoThirdSettings = Math.ceil(Number(val.countValue) / 3)
+                    //     let isThirdLoopEnd = false
+                    //     let lastThirdIndex = 0
+                    //     console.log(Math.floor((infoSecSettings - startSecIndexCount) / 4) * 4, 'ssss')
+                    //     return (
+                    //         <>
+                    //             {
+                    //                 [...new Array(infoThirdSettings)].map((val2, ind) => {
+                    //                     if (startSecIndex > 0) {
+                    //                         startSecIndex--
+                    //                         return null
+                    //                     }
+                    //                     // console.log(Math.floor((((infoSecSettings - startSecIndexCount) / 4) * 4) + startSecIndexCount), 'ee')
+                    //                     // console.log(infoThirdSettings - startIndexSecCount, 'infoThirdSettings - startIndexSecCount')
+                    //                     // debugger
+                    //                     // if (ind >= Math.floor((((infoSecSettings - startSecIndexCount) / 4) * 4) + startSecIndexCount) - startIndexSecCount) {
+                    //                     //     return null
+                    //                     // }
+                    //                     lastThirddIndex = ind
+                    //                     // debugger
+                    //                     isThirdLoopEnd = false
+                    //                     return (
+                    //                         <div className={styles.test_content_third_content_4_b}>
+                    //                             <div className={styles.test_content_third_content_4_1_2}>
+                    //                                 <div className={styles.test_content_third_content_4_1_2_1}>
+                    //                                     <div className={styles.test_content_third_content_4_1_2_1_1}>
+                    //                                         {/* <div className={styles.test_content_third_content_4_1_2_1_1_1}></div> */}
+                    //                                         <div className={styles.test_content_third_content_4_1_2_1_1_1_1}>
+                    //                                             A
+                    //                                         </div>
+                    //                                         <div className={styles.test_content_third_content_4_1_2_1_1_1_1}>
+                    //                                             B
+                    //                                         </div>
+                    //                                         <div className={styles.test_content_third_content_4_1_2_1_1_1_1}>
+                    //                                             C
+                    //                                         </div>
+                    //                                         <div className={styles.test_content_third_content_4_1_2_1_1_1_1}>
+                    //                                             D
+                    //                                         </div>
+                    //                                     </div>
+                    //                                     <div className={styles.test_content_third_content_4_1_2_1_2}>
+                    //                                         {
+                    //                                             [...new Array(Number(val.countValue))].map((va1l, ind1) => {
+                    //                                                 if (!isThirdLoopEnd && ind1 > lastThirdIndex || ind === 0 && ind1 === 0) {
+                    //                                                     if (ind1 % 3 === 0 && ind1 !== 0) {
+                    //                                                         isThirdLoopEnd = true
+                    //                                                         lastThirdIndex = ind1
+                    //                                                         return null
+                    //                                                     } else {
+                    //                                                         countBg += 1
+                    //                                                         return (
+                    //                                                             <div key={ind1} className={styles.test_content_third_content_4_1_1}>
+                    //                                                                 <div className={styles.test_content_third_content_4_1_1_1}>
+                    //                                                                     {countBg}
+                    //                                                                 </div>
+                    //                                                                 <div className={styles.test_content_third_content_4_1_1_2}>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                     </div>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                     </div>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                     </div>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                     </div>
+                    //                                                                 </div>
+                    //                                                             </div>
+                    //                                                         )
+                    //                                                     }
+                    //                                                 } else if (ind1 === lastThirdIndex) {
+                    //                                                     countBg += 1
+                    //                                                     return (
+                    //                                                         (
+                    //                                                             <div key={ind} className={styles.test_content_third_content_4_1_1}>
+                    //                                                                 <div className={styles.test_content_third_content_4_1_1_1}>
+                    //                                                                     {countBg}
+                    //                                                                 </div>
+                    //                                                                 <div className={styles.test_content_third_content_4_1_1_2}>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                     </div>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                     </div>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                     </div>
+                    //                                                                     <div className={styles.test_content_third_content_4_1_1_2_1}>
+                    //                                                                         <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
+                    //                                                                     </div>
+                    //                                                                 </div>
+                    //                                                             </div>
+                    //                                                         )
+                    //                                                     )
+                    //                                                 }
+                    //                                             })
+                    //                                         }
+                    //                                     </div>
+                    //                                 </div>
+                    //                             </div>
+                    //                         </div>
+                    //                     )
+                    //                 })
+                    //             }
+                    //         </>
+                    //     )
+                    // }
+                })}
+                                        </>
             // }
             //     {/* </div>
             // </div> */}
@@ -2076,13 +2166,7 @@ const FinalTestWithAnseComp = () => {
                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1}>
 
 
-
-
-
-
-
-
-                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3}>
+                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_22}>
                                         <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2}>
                                             <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_1}>
                                                 Ընտրովի պատասխան
@@ -2108,7 +2192,43 @@ const FinalTestWithAnseComp = () => {
                                                     </div>
                                                     <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_2}>
                                                         <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3}>
-                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_b}>
+
+                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2}>
+                                                                    <form action="">
+                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                            <input type="radio" name='1'/>
+                                                                        </div>
+                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                            <input type="radio" name='1'/>
+                                                                        </div>
+                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                            <input type="radio" name='1'/>
+                                                                        </div>
+                                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2_1}>
+                                                                            <input type="radio" name='1'/>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_ov}>
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_1}>
+                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_sec}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_2}>
+                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_b}>
 
                                                                 <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_3_1_2}>
                                                                     <form action="">
@@ -2136,440 +2256,103 @@ const FinalTestWithAnseComp = () => {
                                     </div>
 
 
-                                    <div>
-
-
-
-                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                            <div>
-                                                karch patasxanner
+                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3}>
+                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2}>
+                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_1}>
+                                                Կարճ պատասխան
                                             </div>
-                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_1}>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid}>
-                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+
+                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_2_2_ww}>
+
+                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_1}>
+                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                </div>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                </div>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                </div>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                            <div>
-                                                variantov patasxanner
-                                            </div>
-                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_1}>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid}>
-                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                    </div>
-                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_rwqwe}>
+                                                        <input type="text"/>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                </div>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                </div>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                </div>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                    <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
-                                            <div>
-                                                grovi sec patasxanner
-                                            </div>
-                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_1}>
-                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid}>
-                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_1}>
+                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_rwqwe}>
+                                                        <input type="text"/>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2}>
-                                                <input type="text"/>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    {/* {
-            arrWrInfo.map((val) => {
-
-                if (val.selectedValue === 'wrchoose') {
-                    infoSeventhSettings = Math.ceil(Number(val.countValue) / 10)
-                    let isSeventhLoopEnd = false
-                    let lastSeventhIndex = 0
-                    return (
-
-                        [...new Array(infoSeventhSettings)].map((val1, ind1) => {
-                            // debugger
-                            isSeventhLoopEnd = false
-
-                            return (
-                                <div key={ind1} className={styles.test_content_third_content_6_1_1}>
-                                    <div className={styles.test_content_third_content_6_1_1_2}>
-
-                                        <div className={styles.test_content_third_content_3}>
-                                            <div className={styles.test_content_third_content_3_2}>
-                                                <div className={styles.test_content_third_content_3_2_1}>
-                                                    Ընտրովի պատասխան
+                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1}>
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_1}>
+                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_rwqwe}>
+                                                        <input type="text"/>
+                                                    </div>
                                                 </div>
-                                                <div className={styles.test_content_third_content_3_2_2_b}>
-                                                    <span>a</span>
-                                                    <span>b</span>
-                                                    <span>c</span>
-                                                    <span>d</span>
-                                                </div>
-                                                <div className={styles.test_content_third_content_6_1_1_2_1_1}>
 
-                                                    {
-                                                        [...new Array(Number(val.countValue))].map((val, ind) => {
+                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item}>
 
-                                                            if (!isSeventhLoopEnd && ind > lastSeventhIndex || ind === 0 && ind1 === 0) {
-                                                                // initialFIndex += 1
-                                                                // debugger
-                                                                if ((ind + 1) % 10 === 0) {
-                                                                    isSeventhLoopEnd = true
-                                                                    lastSeventhIndex = ind
-                                                                    return null
-                                                                } else {
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_6_1_1_2_1_1_1}>
+                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1_1_2_1_thrid_item}>
+                                                                <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_weq}>
+                                                        <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_in_title}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_in_title_1}>
+                                                                Ճիշտ է
+                                                            </div>
 
-                                                                    return (
-                                                                        <div className={styles.test_content_third_content_6_1_1_2_1_1_ov} key={ind}>
-                                                                            <div className={styles.test_content_third_content_6_1_1_2_1_1_1}>
-                                                                                <div className={styles.test_content_third_content_6_1_1_2_1}>
-                                                                                    <div className={styles.test_content_third_content_4_1_1_2_1_sec}>
-                                                                                        <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                                    </div>
-                                                                                    <div className={styles.test_content_third_content_4_1_1_2_1}>
-                                                                                        <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className={styles.test_content_third_content_6_1_1_2_1_1_2}>
-                                                                                <div className={styles.test_content_third_content_3_2_3}>
-                                                                                    <div className={styles.test_content_third_content_3_2_3_1}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_3_sec_contenw_in_item_in_title_1}>
+                                                                Սխալ է
+                                                            </div>
+                                                        </div>
+                                                        <div className={finalTestWithAnsStl_module_css_1.default.sec_shortanssq_content_b}>
+                                                            <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1}>
+                                                                <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2}>
+                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2_1}>
+                                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
 
-                                                                                        <div className={styles.test_content_third_content_3_2_3_1_2}>
-                                                                                            <form action="">
-                                                                                                <div className={styles.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                    <input type="radio" name='1' />
-                                                                                                </div>
-                                                                                                <div className={styles.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                    <input type="radio" name='1' />
-                                                                                                </div>
-                                                                                                <div className={styles.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                    <input type="radio" name='1' />
-                                                                                                </div>
-                                                                                                <div className={styles.test_content_third_content_3_2_3_1_2_1}>
-                                                                                                    <input type="radio" name='1' />
-                                                                                                </div>
-                                                                                            </form>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                    )
-                                                                }
-                                                            }
-                                                        })
-                                                    }
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })
-
-                    )
-                } else if (val.selectedValue === 'wrshort') {
-
-                    infoEightSettings = Math.ceil(Number(val.countValue) / 3)
-                    let isEightLoopEnd = false
-                    let lastEightIndex = 0
-                    return (
-                        [...new Array(infoEightSettings)].map((val2, ind) => {
-                            // debugger
-                            isEightLoopEnd = false
-                            return (
-                                <div className={styles.test_content_third_content_6_1_2_33}>
-                                    {
-                                        ind === 0
-                                            ?
-                                            <div className={styles.test_content_third_content_3_2_1}>
-                                                Կարճ պատասխանով
-                                            </div>
-                                            :
-                                            null
-                                    }
-                                    <div className={styles.test_content_third_content_4_1}>
-                                        <div className={styles.test_content_third_content_4_1_overlay_ss}>
-                                            {
-                                                [...new Array(Number(val.countValue))].map((val, ind1) => {
-                                                    if (!isEightLoopEnd && ind1 > lastEightIndex || ind === 0 && ind1 === 0) {
-                                                        if (ind1 % 3 === 0 && ind1 !== 0) {
-                                                            isEightLoopEnd = true
-                                                            lastEightIndex = ind1
-                                                            return null
-                                                        } else {
-                                                            return (
-                                                                <div key={ind} className={styles.test_content_third_content_4_1_1}>
-                                                                    <div className={styles.test_content_third_content_6_1_1_2_1_1_1}>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid}>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                        </div>
                                                                     </div>
-                                                                    <div className={styles.test_content_third_content_4_1_1_2}>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                        </div>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                        </div>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                        </div>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                        </div>
+                                                                    <div className={finalTestWithAnsStl_module_css_1.default.test_content_third_content_4_1cc_1_2_2}>
+                                                                        <input type="text" name='short1' maxLength={1} className={finalTestWithAnsStl_module_css_1.default.txtinp}/>
                                                                     </div>
                                                                 </div>
-                                                            )
-                                                        }
-                                                    } else if (ind1 === lastEightIndex) {
-                                                        return (
-                                                            (
-                                                                <div key={ind} className={styles.test_content_third_content_4_1_1}>
-                                                                    <div className={styles.test_content_third_content_6_1_1_2_1_1_1}>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid}>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className={styles.test_content_third_content_4_1_1_2}>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                        </div>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                        </div>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                        </div>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                            <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            )
-                                                        )
-                                                    }
-                                                })
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })
-
-                    )
-                } else {
-                    infoNinethSettings = Math.ceil(Number(val.countValue) / 3)
-                    let isNinethLoopEnd = false
-                    let lastNinethIndex = 0
-
-                    return (
-                        [...new Array(infoNinethSettings)].map((val1, ind) => {
-                            // debugger
-                            isNinethLoopEnd = false
-                            return (
-                                <div className={styles.test_content_third_content_4}>
-                                    <div className={styles.test_content_third_content_4_1_2}>
-                                        <div className={styles.test_content_third_content_4_1_2_1}>
-                                            <div className={styles.test_content_third_content_4_1_2_1_1_sec}>
-                                                <div className={styles.test_content_third_content_4_1_2_1_1_1_1_sec}>
-                                                    A
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div className={styles.test_content_third_content_4_1_2_1_1_1_1_sec}>
-                                                    B
-                                                </div>
-                                                <div className={styles.test_content_third_content_4_1_2_1_1_1_1_sec}>
-                                                    C
-                                                </div>
-                                                <div className={styles.test_content_third_content_4_1_2_1_1_1_1_sec}>
-                                                    D
-                                                </div>
-                                            </div>
-                                            <div className={styles.test_content_third_content_4_1_2_1_2}>
-
-
-                                                {
-                                                    [...new Array(Number(val.countValue))].map((va1l, ind1) => {
-
-                                                        if (!isNinethLoopEnd && ind1 > lastNinethIndex || ind === 0 && ind1 === 0) {
-                                                            if (ind1 % 3 === 0 && ind1 !== 0) {
-                                                                isNinethLoopEnd = true
-                                                                lastNinethIndex = ind1
-                                                                return null
-                                                            } else {
-                                                                return (
-                                                                    <div key={ind} className={styles.test_content_third_content_4_1_1}>
-
-                                                                        <div className={styles.test_content_third_content_6_1_1_2_1_1_1}>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid}>
-                                                                                <div className={styles.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                                                    <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                                </div>
-                                                                                <div className={styles.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                                                    <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2}>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                )
-                                                            }
-                                                        } else if (ind1 === lastNinethIndex) {
-                                                            return (
-                                                                (
-                                                                    <div key={ind} className={styles.test_content_third_content_4_1_1}>
-
-                                                                        <div className={styles.test_content_third_content_6_1_1_2_1_1_1}>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid}>
-                                                                                <div className={styles.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                                                    <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                                </div>
-                                                                                <div className={styles.test_content_third_content_4_1_1_2_1_thrid_item}>
-                                                                                    <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className={styles.test_content_third_content_4_1_1_2}>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                            <div className={styles.test_content_third_content_4_1_1_2_1_thrid_ittm}>
-                                                                                <input type="text" name='short1' maxLength={1} className={styles.txtinp} />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                )
-                                                            )
-                                                        }
-                                                    })
-                                                }
 
                                             </div>
 
                                         </div>
 
                                     </div>
-
-                                </div>
-                            )
-                        })
-                    )
-                }
-            })
-        } */}
 
 
                                 </div>
@@ -2610,8 +2393,6 @@ const FinalTestWithAnseComp = () => {
             <div className={finalTestWithAnsStl_module_css_1.default.printPart}>
                 <button onClick={() => printFunc()}>print</button>
             </div>
-        </div>
-    // </div >
-    );
+        </div>);
 };
 exports.default = FinalTestWithAnseComp;

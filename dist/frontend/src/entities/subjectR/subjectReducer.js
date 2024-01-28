@@ -7,14 +7,14 @@ const initialState = {
     loading: false,
     error: null,
     allExams: [],
-    saveSubjectNameFunc: ''
+    saveSubjectName: ''
 };
 exports.subjectSlice = (0, toolkit_1.createSlice)({
     name: 'subject',
     initialState,
     reducers: {
         saveSubjectNameFunc(state, action) {
-            state.saveSubjectNameFunc = action.payload.info;
+            state.saveSubjectName = action.payload.info;
             console.log((0, toolkit_1.current)(state));
         },
     },
@@ -39,8 +39,20 @@ exports.subjectSlice = (0, toolkit_1.createSlice)({
             .addCase(subjectReducerThunk_1.getExamsFunc.fulfilled, (state, action) => {
             state.loading = false;
             state.allExams = action.payload;
+            console.log((0, toolkit_1.current)(state), 'current(stateasdfffeewefwqqqqqqqqq)');
         })
             .addCase(subjectReducerThunk_1.getExamsFunc.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error.message || 'An error occurred';
+        })
+            .addCase(subjectReducerThunk_1.changeSubjectPicFunc.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+            .addCase(subjectReducerThunk_1.changeSubjectPicFunc.fulfilled, (state, action) => {
+            state.loading = false;
+        })
+            .addCase(subjectReducerThunk_1.changeSubjectPicFunc.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message || 'An error occurred';
         });

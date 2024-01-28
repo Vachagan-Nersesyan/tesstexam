@@ -8,6 +8,7 @@ const path_1 = __importDefault(require("path"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const subject_routes_1 = __importDefault(require("./routes/subject-routes"));
 const question_routes_1 = __importDefault(require("./routes/question-routes"));
+const teacher_router_1 = __importDefault(require("./routes/teacher-router"));
 const app = (0, express_1.default)();
 const db = 'mongodb+srv://nersesyanvach80:iloveyoulikeiloveme@testexamcluster.oz3gzck.mongodb.net/testExamDB?retryWrites=true&w=majority';
 mongoose_1.default
@@ -19,6 +20,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.static('./frontend/build'));
 app.use(subject_routes_1.default);
 app.use(question_routes_1.default);
+app.use(teacher_router_1.default);
 app.get('*', (req, res) => {
     res.sendFile(path_1.default.join(__dirname, './frontend/build', 'index.html'));
 });

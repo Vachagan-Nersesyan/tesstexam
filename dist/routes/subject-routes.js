@@ -9,4 +9,5 @@ const question_controller_1 = require("../controllers/question-controller");
 const router = express_1.default.Router();
 router.post('/add-subject', subject_controller_1.addSubject);
 router.get('/get-subject', question_controller_1.getAllExams);
+router.post('/change-picture', subject_controller_1.changePicFunc);
 exports.default = router;

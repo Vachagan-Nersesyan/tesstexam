@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getExamsFunc = exports.addSubjectFunc = void 0;
+exports.changeSubjectPicFunc = exports.getExamsFunc = exports.addSubjectFunc = void 0;
 const toolkit_1 = require("@reduxjs/toolkit");
 exports.addSubjectFunc = (0, toolkit_1.createAsyncThunk)('exam/addSubjectFunc', (item) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(item.info, 'item.infoitem.infoitem.infoitem.infoitem.infoitem.info');
@@ -34,6 +34,26 @@ exports.addSubjectFunc = (0, toolkit_1.createAsyncThunk)('exam/addSubjectFunc', 
 exports.getExamsFunc = (0, toolkit_1.createAsyncThunk)('test/getExamsFunc', () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch('/get-subject');
+        if (!response.ok) {
+            throw new Error('Request failed');
+        }
+        const data = yield response.json();
+        return data;
+    }
+    catch (error) {
+        throw error;
+    }
+}));
+exports.changeSubjectPicFunc = (0, toolkit_1.createAsyncThunk)('exam/changeSubjectPicFunc', (item) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(item, 'item.infoitem.infoitem.infoitem.infoitem.infoitem.info');
+    try {
+        const response = yield fetch(`/change-picture`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ info: item }),
+        });
         if (!response.ok) {
             throw new Error('Request failed');
         }

@@ -31,12 +31,16 @@ const examsStl_module_css_1 = __importDefault(require("./examsStl.module.css"));
 const react_redux_1 = require("react-redux");
 const redux_store_1 = require("entities/store/redux-store");
 const subjectReducerThunk_1 = require("entities/subjectR/subjectReducerThunk");
-const subjectExam_1 = __importDefault(require("feautures/subjectExam"));
 const react_router_dom_1 = require("react-router-dom");
 const testReducer_1 = require("entities/testR/testReducer");
 const subjectReducer_1 = require("entities/subjectR/subjectReducer");
-const _1_png_1 = __importDefault(require("../images/1.png"));
+const antd_1 = require("antd");
 const WorkspaceComp = () => {
+    const navigate = (0, react_router_dom_1.useNavigate)();
+    const isAdminItem = (0, react_redux_1.useSelector)((state) => state.adminR.isAdmin);
+    // if (!isAdminItem) {
+    //     navigate('/login')
+    // }
     const aDispatch = (0, redux_store_1.useAppDispatch)();
     const dispatch = (0, react_redux_1.useDispatch)();
     const [isShow, setIsShow] = (0, react_1.useState)(false);
@@ -48,108 +52,124 @@ const WorkspaceComp = () => {
     }, []);
     const allExams = (0, react_redux_1.useSelector)((state) => state.subjectR.allExams);
     const [subjectArr, setSubjectArr] = (0, react_1.useState)(allExams);
+    const loader = (0, react_redux_1.useSelector)((state) => state.subjectR.loading);
+    const [loaderHk, setLoaderHk] = (0, react_1.useState)(loader);
+    const curentTeacherInfoComp = (0, react_redux_1.useSelector)((state) => state.adminR.curentTeacherInfo);
+    const [curentTeacherInfoCompHk, setCurentTeacherInfoCompHk] = (0, react_1.useState)(curentTeacherInfoComp);
     (0, react_1.useEffect)(() => {
-        console.log(allExams);
-        setSubjectArr(allExams);
+        setCurentTeacherInfoCompHk(curentTeacherInfoComp);
+    }, [curentTeacherInfoComp]);
+    (0, react_1.useEffect)(() => {
+        setLoaderHk(loader);
+    }, [loader]);
+    (0, react_1.useEffect)(() => {
+        let allExamsClone = allExams.filter((val) => val.teacherName === (curentTeacherInfoCompHk === null || curentTeacherInfoCompHk === void 0 ? void 0 : curentTeacherInfoCompHk.password));
+        console.log(allExams, allExamsClone, 'allExamsClone');
+        setSubjectArr(allExamsClone);
     }, [allExams]);
+    (0, react_1.useEffect)(() => {
+        let allExamsClone = allExams.filter((val) => val.teacherName === (curentTeacherInfoCompHk === null || curentTeacherInfoCompHk === void 0 ? void 0 : curentTeacherInfoCompHk.password));
+        console.log(allExams, allExamsClone, 'allExamsClone');
+        setSubjectArr(allExamsClone);
+    }, []);
     const addSubject = () => {
         let obj = {
             subjectName,
-            exams: []
+            exams: [],
+            date: new Date().toJSON().slice(0, 10).replace(/-/g, '/'),
+            picture: '',
+            teacherName: curentTeacherInfoCompHk === null || curentTeacherInfoCompHk === void 0 ? void 0 : curentTeacherInfoCompHk.password
         };
         setIsFirstSubject(false);
         setIsShow(false);
         setIsSecShow(false);
+        console.log(obj, 'objobjobj');
         dispatch((0, subjectReducer_1.saveSubjectNameFunc)({ info: subjectName }));
         aDispatch((0, subjectReducerThunk_1.addSubjectFunc)({ info: obj }));
     };
     // deee
-    const navigate = (0, react_router_dom_1.useNavigate)();
     const [testName, setTestName] = (0, react_1.useState)('');
     const generateTestFunc = () => {
         dispatch((0, testReducer_1.changeTestName)({ info: testName }));
         // dispatch(saveSubjectNameFunc({ info: subjectName }))
         navigate('/test-items');
     };
-    return (<div className={examsStl_module_css_1.default.exam_contant}>
-
-            <div className={examsStl_module_css_1.default.exam_contant_container}>
-
-                <div className={examsStl_module_css_1.default.exam_contant_container_title}>
-                    <div className={examsStl_module_css_1.default.exam_contant_container_logo}>
-                        <img src={_1_png_1.default}/>
-                    </div>
-                    <div className={examsStl_module_css_1.default.exam_contant_container_title_text}>
-                        Երևանի ինֆորմատիկայի պետական քոլեջ
-                    </div>
+    // modal part
+    const [isModalOpen, setIsModalOpen] = (0, react_1.useState)(false);
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+        addSubject();
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+    return (<>
+            <div className={examsStl_module_css_1.default.exam_contant}>
+                <div className={examsStl_module_css_1.default.exam_content_sub_ttle}>
+                    <antd_1.Row>
+                        <antd_1.Col span={12}>
+                            Առարկաներ
+                        </antd_1.Col>
+                        <antd_1.Col span={12} className={examsStl_module_css_1.default.exam_add_content}>
+                            <div className={examsStl_module_css_1.default.exam_add_content_in_item_2}>
+                                <button onClick={showModal}>Ավելացնել առարկա</button>
+                            </div>
+                        </antd_1.Col>
+                    </antd_1.Row>
                 </div>
 
-                <div>
-                    {subjectArr.map((val) => {
-            return (<subjectExam_1.default val={val}/>);
-        })}
+                <div className={examsStl_module_css_1.default.exam_contant_container_in_cont_ovrl}>
+                    {subjectArr.length === 0
+            ?
+                <div className={examsStl_module_css_1.default.exam_contant_container_in_cont_title}>
+                                Դեռ առարկաներ գոյություն չունեն
+                            </div>
+            :
+                <antd_1.Row className={examsStl_module_css_1.default.exam_contant_container_in_cont}>
+
+                                {loaderHk
+                        ?
+                            <div className={examsStl_module_css_1.default.login_content_text_item_loader}>
+                                            <img src={`${loader}`} alt=""/>
+                                        </div>
+                        :
+                            subjectArr.map((val) => {
+                                return (
+                                // <Col span={5} className={styles.exam_contant_container_in_cont_item} style={{ backgroundImage: `url(${val.picture})` }}>
+                                <react_router_dom_1.NavLink className={examsStl_module_css_1.default.exam_contant_container_in_cont_item} style={{ backgroundImage: `url(${val.picture})` }} to={`/exams/${val.subjectName}`}>
+                                                    <span className={examsStl_module_css_1.default.exam_contant_container_in_cont_item_1}>{val.date}</span>
+                                                    <span>{val.subjectName}</span>
+                                                </react_router_dom_1.NavLink>
+                                // </Col>
+                                );
+                                // return (
+                                //     <SubjectExamComp val={val} />
+                                // )
+                            })}
+                            </antd_1.Row>}
                 </div>
 
-            </div>
 
-            {isShow
-            ?
-                <div>
-                        <input type="text" onChange={(e) => setSubjectName(e.target.value)}/>
-                        <button onClick={addSubject}>add</button>
+
+            </div>
+            <antd_1.Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} cancelText={<div>Չեղարկել</div>} okText={<div>Հաստատել</div>} closable={false}>
+                <div className={examsStl_module_css_1.default.exam_mdl_content}>
+                    <div className={examsStl_module_css_1.default.exam_mdl_content_title}>
+                        Ավելացնել Նոր առարկա
                     </div>
-            :
-                null}
-
-
-            {isFirstSubject
-            ?
-                <button onClick={() => setIsShow(!isShow)}>
-                        {isShow ? '-' : '+'}
-                    </button>
-            :
-                null}
-
-            {/* delete start */}
-            {/* <div>
-            <div>
-                wefweffewfewewfwfefewewwfefew
-            </div>
-            {
-                true
-                    ?
-                    <div>
-                        <div>
-                            <input type="text" onChange={(e) => setTestName(e.target.value)} placeholder='Please write exam name...' />
+                    <div className={examsStl_module_css_1.default.exam_mdl_content_txt}>
+                        <div className={examsStl_module_css_1.default.exam_mdl_content_txt_1}>
+                            Խնդրում ենք գրեք  առարկայի անվանումը
                         </div>
-                        <button onClick={generateTestFunc}>Start</button>
+                        <div className={examsStl_module_css_1.default.exam_mdl_content_txt_2}>
+                            <antd_1.Input onChange={(e) => setSubjectName(e.target.value)}/>
+                        </div>
                     </div>
-                    :
-                    null
-            }
-            <button >
-                add exam
-            </button>
-        </div> */}
-
-            {/* delete end */}
-
-            {isSecShow
-            ?
-                <div>
-                        <input type="text" onChange={(e) => setSubjectName(e.target.value)}/>
-                        <button onClick={addSubject}>add</button>
-                    </div>
-            :
-                null}
-            {isFirstSubject
-            ?
-                null
-            :
-                <button onClick={() => setIsSecShow(!isShow)}>
-                        {isSecShow ? '-' : '+'}
-                    </button>}
-
-        </div>);
+                </div>
+            </antd_1.Modal>
+        </>);
 };
 exports.default = WorkspaceComp;

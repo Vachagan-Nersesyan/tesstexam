@@ -11,7 +11,23 @@ const subjectSchema = new Schema({
     exams: {
         type: Array,
         required: true
-    }
+    },
+    textInfo: {
+        type: Object,
+        required: false
+    },
+    date: {
+        type: String,
+        required: false
+    },
+    picture: {
+        type: String,
+        required: false
+    },
+    teacherName: {
+        type: String,
+        required: false
+    },
 
 })
 

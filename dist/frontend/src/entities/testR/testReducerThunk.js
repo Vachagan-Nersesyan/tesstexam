@@ -9,12 +9,52 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendQuestionFunc = void 0;
+exports.deleteQuestionFunc = exports.updateQuestionFunc = exports.sendQuestionFunc = void 0;
 const toolkit_1 = require("@reduxjs/toolkit");
 // import { QuestionType } from "./testReducerTs.interface";
 exports.sendQuestionFunc = (0, toolkit_1.createAsyncThunk)('test/sendQuestion', (item) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch(`/add-question`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ info: item }),
+        });
+        if (!response.ok) {
+            throw new Error('Request failed');
+        }
+        const data = yield response.json();
+        return data;
+    }
+    catch (error) {
+        throw error;
+    }
+}));
+exports.updateQuestionFunc = (0, toolkit_1.createAsyncThunk)('test/updateQuestionFunc', (item) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(item, 'updateupdateupdateupdateasdasdasdupdateupdate');
+    try {
+        const response = yield fetch(`/update-test`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ info: item }),
+        });
+        if (!response.ok) {
+            throw new Error('Request failed');
+        }
+        const data = yield response.json();
+        return data;
+    }
+    catch (error) {
+        throw error;
+    }
+}));
+exports.deleteQuestionFunc = (0, toolkit_1.createAsyncThunk)('test/deleteQuestionFunc', (item) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(item, 'updateupdateupdateupdateasdasdasdupdateupdate');
+    try {
+        const response = yield fetch(`/delete-test`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

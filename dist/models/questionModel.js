@@ -17,6 +17,14 @@ const addQuestionSchema = new Schema({
     subjjectName: {
         type: String,
         required: false
+    },
+    textInfo: {
+        type: Object,
+        required: false
+    },
+    otherInfo: {
+        type: Object,
+        required: false
     }
 });
 const AddQuestionItem = mongoose_1.default.model('allexams', addQuestionSchema);

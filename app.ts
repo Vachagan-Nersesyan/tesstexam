@@ -6,11 +6,14 @@ import mongoose from "mongoose"
 
 import subjectRouter from './routes/subject-routes'
 import questionRouter from './routes/question-routes'
+import teacherRouter from './routes/teacher-router'
 
 const app = express()
 
 
 const db = 'mongodb+srv://nersesyanvach80:iloveyoulikeiloveme@testexamcluster.oz3gzck.mongodb.net/testExamDB?retryWrites=true&w=majority'
+
+
 
 mongoose
     .connect(db)
@@ -28,6 +31,7 @@ app.use(express.static('./frontend/build'))
 
 app.use(subjectRouter)
 app.use(questionRouter)
+app.use(teacherRouter)
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './frontend/build', 'index.html'));

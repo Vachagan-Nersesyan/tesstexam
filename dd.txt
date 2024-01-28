@@ -1,3 +1,0 @@
- "start": "nodemon --require dotenv/config app.ts",
-    "build": "tsc",
-    "watch": "tsc -w"

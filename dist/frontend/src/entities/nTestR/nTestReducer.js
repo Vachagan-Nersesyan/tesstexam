@@ -10,7 +10,9 @@ const initialState = {
     questCountInfo: {
         thchoose: '',
         thshort: '',
-        thshortanvariant: ''
+        thshortanvariant: '',
+        thshortb: '',
+        thshortcctgry: ''
     },
     allQuestTest: [],
     questInfo: {
@@ -20,6 +22,7 @@ const initialState = {
         arName: '',
         teachName: '',
         date: '',
+        clssNm: ''
     }
 };
 exports.newTestSlice = (0, toolkit_1.createSlice)({
@@ -28,10 +31,10 @@ exports.newTestSlice = (0, toolkit_1.createSlice)({
     reducers: {
         newTestQuestionsCountFunc(state, action) {
             state.questCountInfo = action.payload.info;
+            console.log((0, toolkit_1.current)(state), 'current(state)current(state)');
         },
         newTestQuestionsInfoFunc(state, action) {
             state.questInfo = action.payload.info;
-            console.log((0, toolkit_1.current)(state), 'current(state)current(state)');
         },
     },
     extraReducers: (builder) => {
