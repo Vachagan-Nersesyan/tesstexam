@@ -4,27 +4,31 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --require dotenv/config app.ts",
+    "start": "nodemon --require dotenv/config app.js",
     "build": "tsc",
     "watch": "tsc -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
-    "dotenv": "^16.3.1",
-    "nodemon": "^3.0.2"
+    "@types/mysql": "^2.15.25",
+    "dotenv": "^16.4.1",
+    "nodemon": "^3.0.3"
   },
   "dependencies": {
     "@types/express": "^4.17.21",
-    "@types/node": "^20.10.7",
+    "@types/node": "^20.11.9",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.3",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.0",
     "node-fetch": "^3.3.2",
+    "sequelize": "^6.35.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
